@@ -1,32 +1,29 @@
-import	ply.lex as lex
-from utils import slurp
 from TAPParser import TAPLexer
 from treelib import Node, Tree
 import json
 from globalstats import GlobalStats
-import os
+from filesinfo import FileInfo
 
-
+ #Intializing Class Instances
+ #
 a = TAPLexer()
 b = GlobalStats()
+c = FileInfo()
 
 a.build()
 
 a.inputFile("inputs/teste3.t")
 
-
-
 a.execute()
 
 b.LoadFile("globalstats.json")
-print(b.totalTests)
 b.UpdateStats(a.n_tests, a.n_ok_subtests , a.n_nok_tests, a.n_subtests, a.n_ok_subtests, a.n_nok_subtests)
-
-#Retorno ao utilizador - Informação dos testes por ficheiro
-print(a.n_tests, a.n_ok_subtests , a.n_nok_tests, a.n_subtests, a.n_ok_subtests, a.n_nok_subtests)
+c.UpdateFileInfo(b.totalFiles, "inputs/teste3.t", a.n_ok_tests, a.n_nok_tests, a.n_ok_subtests, a.n_nok_subtests)
+c.SaveToJSON("fileInfo.json")
 b.SaveToFile("globalstats.json")
 
 a.tree_manager.mainTree.show()
+print(b.__dict__)
 
 
 data = a.tree_manager.mainTree.to_json()

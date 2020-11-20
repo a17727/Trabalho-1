@@ -1,9 +1,1 @@
-{
-    "totalFiles": 2,
-    "totalTests": 6,
-    "totalOkTests": 8,
-    "totalNotOktests": 1,
-    "totalSubtests": 5,
-    "totalOkSubtests": 4,
-    "totalNotOkSubtests": 1
-}
+{"totalFiles": 42, "totalTests": 126, "totalOkTests": 168, "totalNotOktests": 1, "totalSubtests": 5, "totalOkSubtests": 4, "totalNotOkSubtests": 1}

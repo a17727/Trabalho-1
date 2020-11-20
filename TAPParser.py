@@ -20,7 +20,7 @@ class TAPLexer:
         self.lexer = None
     
     tokens = ('N_TESTS', 'OK_TEST', 'NOK_TEST', 'N_SUBTESTS', 'OK_SUBTEST', 'NOK_SUBTEST', 'COMMENT')
-    
+
     t_ignore = "\n"
 
     def t_error(self, t):
