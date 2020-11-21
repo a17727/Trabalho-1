@@ -4,8 +4,7 @@ import json
 from globalstats import GlobalStats
 from filesinfo import FileInfo
 
- #Intializing Class Instances
- #
+
 a = TAPLexer()
 b = GlobalStats()
 c = FileInfo()

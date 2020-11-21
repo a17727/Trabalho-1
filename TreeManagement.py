@@ -44,6 +44,11 @@ class TreeManagement:
         self.nodeRoot = self.mainTree.create_node(tag = "Root", identifier= "root", data=TreeNode("root", "root"))
 
     def CreateTestOkNode(self, value):
+        '''
+        This method creates a "ok" status test node and adds it to the tree
+        Arguments:
+            - value: node identification
+        '''
         if self.subTree != None:
             self.node = self.mainTree.create_node(value, value, parent= self.nodeRoot, data = TreeNode("OK", ""))
             self.mainTree.merge(value, self.subTree)
@@ -51,6 +56,11 @@ class TreeManagement:
             self.mainTree.create_node(value, value, parent= self.nodeRoot, data = TreeNode("OK", ""))
 
     def CreateSubtestOkNode(self, value):
+        '''
+        This method creates a "ok" status subtest node and adds it to the tree
+        Arguments:
+            - value: node identification
+        '''
         n = GetTreeLevel(value)
         if n == 1:
             if self.subTree != None:
@@ -61,6 +71,11 @@ class TreeManagement:
         self.nodeList[n] = self.subTree.create_node(value, value, parent=self.nodeList[n-1], data = TreeNode("OK", ""))
 
     def CreateTestNotOkNode(self, value):
+        '''
+        This method creates a "not ok" status test node and adds it to the tree
+        Arguments:
+            - value: node identification
+        '''
         if self.subTree != None:
             self.node = self.mainTree.create_node(value, value, parent= self.nodeRoot, data = TreeNode("OK", ""))
             self.mainTree.merge(value, self.subTree)
@@ -68,6 +83,11 @@ class TreeManagement:
             self.mainTree.create_node(value, value, parent= self.nodeRoot, data = TreeNode("OK", ""))
 
     def CreateSubtestNotOkNode(self, value):
+        '''
+        This method creates a "not ok" status subtest node and adds it to the tree
+        Arguments:
+            - value: node identification
+        '''
         n = GetTreeLevel(value)
         if n == 1:
             if self.subTree != None:

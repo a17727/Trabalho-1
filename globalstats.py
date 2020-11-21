@@ -2,6 +2,17 @@ import os
 import json
 
 class GlobalStats():
+
+    '''
+    "GlobalStats" class is used to store the global results of all the files processed.
+    The class is composed by the following atributes:
+        - totalFiles: total number of files processed to the moment;
+        - totalTests: total number of tests on files processed;
+        - totalOkTests: total number of tests with "ok" status;
+        - totalNotOktests: total number of tests with "not ok" status;
+        - totalOkSubtests: total number of subtests with "ok" status;
+        - totalNotOkSubtests: total number of subtests with "not ok" status;
+    '''
     def __init__(self):
        
         self.totalFiles = 0
@@ -13,6 +24,9 @@ class GlobalStats():
         self.totalNotOkSubtests = 0
 
     def UpdateStats(self, tests, okTests, notOkTests, subTests, okSubtests, notOkSubtests):
+        '''
+        This method updates the stats of all files processed.
+        '''
         self.totalFiles += 1
         self.totalTests += tests
         self.totalOkTests += okTests
@@ -23,6 +37,11 @@ class GlobalStats():
 
     
     def LoadFile(self,filePath):
+        '''
+        This method loads JSON file information to a class instance, making it possible to update the global stats.
+        Arguments:
+            - filePath: path of the JSON file to be loaded.
+        '''
         try:
             with open(filePath, 'r') as f:
                 obj_dict = json.loads(f.read())
@@ -39,6 +58,11 @@ class GlobalStats():
 
     def SaveToFile(self, filePath):
 
+        '''
+        This method saves the updated global stats in a JSON file.
+        Arguments:
+            - filePath: path of the JSON file to be stored.
+        '''
         jsonified_object = self.__dict__
         with open(filePath, 'w') as output:
             json.dump(jsonified_object, output)
