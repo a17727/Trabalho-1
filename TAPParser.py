@@ -38,7 +38,6 @@ class TAPLexer:
 
     # Handling errors:
     def t_error(self, t):
-        #print("Illegal character '%s'" % t.value[0])
         t.lexer.skip(1)
 
     # Rule for comment token
@@ -74,7 +73,7 @@ class TAPLexer:
         self.tree_manager.CreateSubtestOkNode(t.value)
         return t
 
-    # Rule for "not ok" status tests token; counts "ok" status tests on file.
+    # Rule for "not ok" status tests token; counts "not ok" status tests on file.
     def t_NOK_TEST(self, t):
         r"(not\sok)\s[0-9]+"
         self.n_nok_tests += 1
@@ -82,7 +81,7 @@ class TAPLexer:
         self.tree_manager.CreateTestNotOkNode(t.value)
         return t
 
-    # Rule for "not ok" status tests token; counts "not ok" status subtests on file.
+    # Rule for "not ok" status subtests token; counts "not ok" status subtests on file.
     def t_NOK_SUBTEST(self, t):
         r"\s+(not\sok)\s[0-9]+"
         self.n_nok_subtests += 1
